@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:home_rent_app/models/room.dart';
-import 'package:home_rent_app/constants.dart';
+import '../helpers/colors.dart';
+import '../models/room.dart';
+
 
 class PopularPlaceCard extends StatelessWidget {
   final Room room;
@@ -8,6 +9,7 @@ class PopularPlaceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
       height: 90.0,
       margin: EdgeInsets.symmetric(horizontal: 18.0, vertical: 5.0),
@@ -43,7 +45,8 @@ class PopularPlaceCard extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.0),
                     ),
-                    color: kBlue,
+                    color: kBlueColor,
+
                     child: Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: 8.0,
@@ -54,10 +57,12 @@ class PopularPlaceCard extends StatelessWidget {
                           Icon(
                             Icons.star,
                             size: 10.0,
-                            color: kWhite,
+                            color: kBackgroundLightColor,
                           ),
                           SizedBox(width: 3.0),
-                          Text(room.rating, style: kRatingStyle)
+                          Text(room.rating,
+                              style: theme.textTheme.headline5
+                                  .copyWith(color: kPrimaryDarkColor))
                         ],
                       ),
                     ),
@@ -73,22 +78,17 @@ class PopularPlaceCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text(room.name, style: kTitleStyle, maxLines: 1),
-                  Text(room.place, style: kSubtitleStyle),
+                  Text(room.name,
+                      style: theme.textTheme.headline3, maxLines: 1),
+                  Text(room.place, style: theme.textTheme.subtitle2),
                   Row(
                     children: <Widget>[
-                      Text(
-                        "${room.width}ft | ${room.height}ft",
-                        maxLines: 1,
-                        style: kSubtitleStyle.copyWith(
-                          color: kBlack.withOpacity(1.0),
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
+                      Text("${room.width}ft | ${room.height}ft",
+                          maxLines: 1, style: theme.textTheme.subtitle1),
                       Spacer(),
                       Text(
                         "\$ ${room.price}.00",
-                        style: kTitleStyle.copyWith(color: kBlue),
+                        style: theme.textTheme.headline3.copyWith(color: kBlueColor),
                       )
                     ],
                   ),

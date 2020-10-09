@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:home_rent_app/constants.dart';
-import 'package:home_rent_app/models/room.dart';
-import 'package:home_rent_app/widgets/popular_place_card.dart';
-import 'package:home_rent_app/widgets/recomended_card.dart';
+import '../models/room.dart';
+import '../providers/theme_provider.dart';
+import '../widgets/popular_place_card.dart';
+import '../widgets/recomended_card.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -15,8 +16,8 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: kWhite,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(120.0),
         child: SafeArea(
@@ -25,13 +26,18 @@ class _HomeState extends State<Home> {
               ListTile(
                 title: Text(
                   "My Location",
-                  style: kSubtitleStyle.copyWith(height: 2.0),
+                  style: theme.textTheme.subtitle2,
                 ),
                 subtitle: Text(
                   "Jakarta, Indonesia",
-                  style: kTitleStyle.copyWith(height: 1.5),
+                  style: theme.textTheme.headline3.copyWith(height: 1.5),
                 ),
-                trailing: Icon(Icons.notifications, color: kBlack),
+                trailing: InkWell(
+                    onTap: () {
+                      Provider.of<ThemeProvider>(context, listen: false)
+                          .changeTheme();
+                    },
+                    child: Icon(Icons.notifications_outlined)),
               ),
               Row(
                 children: <Widget>[
@@ -39,7 +45,6 @@ class _HomeState extends State<Home> {
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 14.0),
                     decoration: BoxDecoration(
-                      color: Colors.white,
                       borderRadius: BorderRadius.circular(12.0),
                     ),
                     child: DropdownButton(
@@ -47,7 +52,6 @@ class _HomeState extends State<Home> {
                       icon: Icon(
                         Icons.keyboard_arrow_down,
                         size: 20.0,
-                        color: kBlack.withOpacity(.5),
                       ),
                       underline: Container(),
                       onChanged: (String beds) {
@@ -59,7 +63,7 @@ class _HomeState extends State<Home> {
                           .map(
                             (e) => DropdownMenuItem(
                               value: e,
-                              child: Text(e),
+                              child: Text(e, style: theme.textTheme.bodyText1),
                             ),
                           )
                           .toList(),
@@ -69,7 +73,6 @@ class _HomeState extends State<Home> {
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 14.0),
                     decoration: BoxDecoration(
-                      color: Colors.white,
                       borderRadius: BorderRadius.circular(12.0),
                     ),
                     child: DropdownButton(
@@ -77,7 +80,6 @@ class _HomeState extends State<Home> {
                       icon: Icon(
                         Icons.keyboard_arrow_down,
                         size: 20.0,
-                        color: kBlack.withOpacity(.5),
                       ),
                       underline: Container(),
                       onChanged: (String beds) {
@@ -127,8 +129,8 @@ class _HomeState extends State<Home> {
               ),
               SizedBox(height: 15.0),
               ListTile(
-                title: Text("Popular Place", style: kTitleStyle),
-                trailing: Text("View All", style: kTrailingStyle),
+                title: Text("Popular Place", style: theme.textTheme.headline3),
+                trailing: Text("View All", style: theme.textTheme.subtitle1),
               ),
               ListView.builder(
                 itemCount: roomList.length,

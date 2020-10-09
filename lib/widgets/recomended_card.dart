@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:home_rent_app/constants.dart';
-import 'package:home_rent_app/models/room.dart';
+import '../helpers/colors.dart';
+import '../models/room.dart';
 
 class RecommendedCard extends StatelessWidget {
   final Room room;
   RecommendedCard({this.room});
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Card(
       margin: EdgeInsets.only(left: 18.0, bottom: 8.0),
       elevation: 0.5,
@@ -34,20 +35,21 @@ class RecommendedCard extends StatelessWidget {
                 Text(
                   room.name,
                   maxLines: 2,
-                  style: kTitleStyle.copyWith(fontSize: 16.0),
+                  style: theme.textTheme.headline4,
                 ),
-                SizedBox(height: 12.0),
+                SizedBox(height: 8.0),
                 Text(
                   room.place,
                   maxLines: 2,
-                  style: kSubtitleStyle.copyWith(fontSize: 13.0),
+                  style: theme.textTheme.subtitle2,
                 ),
                 Spacer(),
                 Row(
                   children: <Widget>[
                     Text(
                       "\$ ${room.price}.00",
-                      style: kTitleStyle.copyWith(color: kBlue),
+                      style:
+                          theme.textTheme.headline3.copyWith(color: kBlueColor),
                     ),
                     Spacer(),
                     Container(
@@ -57,15 +59,15 @@ class RecommendedCard extends StatelessWidget {
                         shape: BoxShape.circle,
                         gradient: LinearGradient(
                           colors: [
-                            kRedAccent,
-                            kRed,
+                            kErrorDarkColor,
+                            kErrorLightColor,
                           ],
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: kRedAccent.withOpacity(.7),
+                            color: theme.errorColor.withOpacity(.7),
                             blurRadius: 15.0,
                             spreadRadius: 0.2,
                             offset: Offset(0, 8),
@@ -74,7 +76,7 @@ class RecommendedCard extends StatelessWidget {
                       ),
                       child: Icon(
                         Icons.bookmark,
-                        color: kWhite,
+                        color: kBackgroundLightColor,
                         size: 20.0,
                       ),
                     ),
