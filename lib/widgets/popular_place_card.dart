@@ -4,7 +4,7 @@ import '../models/room.dart';
 
 
 class PopularPlaceCard extends StatelessWidget {
-  final Room room;
+  final Room? room;
   PopularPlaceCard({this.room});
 
   @override
@@ -32,7 +32,7 @@ class PopularPlaceCard extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(12.0),
                     child: Image.asset(
-                      room.image,
+                      room!.image!,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -60,8 +60,8 @@ class PopularPlaceCard extends StatelessWidget {
                             color: kBackgroundLightColor,
                           ),
                           SizedBox(width: 3.0),
-                          Text(room.rating,
-                              style: theme.textTheme.headline5
+                          Text(room!.rating!,
+                              style: theme.textTheme.headline5!
                                   .copyWith(color: kPrimaryDarkColor))
                         ],
                       ),
@@ -78,17 +78,17 @@ class PopularPlaceCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text(room.name,
+                  Text(room!.name!,
                       style: theme.textTheme.headline3, maxLines: 1),
-                  Text(room.place, style: theme.textTheme.subtitle2),
+                  Text(room!.place!, style: theme.textTheme.subtitle2),
                   Row(
                     children: <Widget>[
-                      Text("${room.width}ft | ${room.height}ft",
+                      Text("${room!.width}ft | ${room!.height}ft",
                           maxLines: 1, style: theme.textTheme.subtitle1),
                       Spacer(),
                       Text(
-                        "\$ ${room.price}.00",
-                        style: theme.textTheme.headline3.copyWith(color: kBlueColor),
+                        "\$ ${room!.price}.00",
+                        style: theme.textTheme.headline3!.copyWith(color: kBlueColor),
                       )
                     ],
                   ),

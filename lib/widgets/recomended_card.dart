@@ -3,7 +3,7 @@ import '../helpers/colors.dart';
 import '../models/room.dart';
 
 class RecommendedCard extends StatelessWidget {
-  final Room room;
+  final Room? room;
   RecommendedCard({this.room});
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class RecommendedCard extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(25.0),
             child: Image.asset(
-              room.image,
+              room!.image!,
               fit: BoxFit.cover,
               width: 200.0,
               height: 180.0,
@@ -33,13 +33,13 @@ class RecommendedCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  room.name,
+                  room!.name!,
                   maxLines: 2,
                   style: theme.textTheme.headline4,
                 ),
                 SizedBox(height: 8.0),
                 Text(
-                  room.place,
+                  room!.place!,
                   maxLines: 2,
                   style: theme.textTheme.subtitle2,
                 ),
@@ -47,9 +47,9 @@ class RecommendedCard extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     Text(
-                      "\$ ${room.price}.00",
+                      "\$ ${room!.price}.00",
                       style:
-                          theme.textTheme.headline3.copyWith(color: kBlueColor),
+                          theme.textTheme.headline3!.copyWith(color: kBlueColor),
                     ),
                     Spacer(),
                     Container(

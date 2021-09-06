@@ -11,8 +11,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  String dropdownBeds = '2-4 Beds';
-  String dropdownFilter = 'Short by: Price';
+  String? dropdownBeds = '2-4 Beds';
+  String? dropdownFilter = 'Short by: Price';
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class _HomeState extends State<Home> {
                 ),
                 subtitle: Text(
                   "Jakarta, Indonesia",
-                  style: theme.textTheme.headline3.copyWith(height: 1.5),
+                  style: theme.textTheme.headline3!.copyWith(height: 1.5),
                 ),
                 trailing: InkWell(
                     onTap: () {
@@ -54,7 +54,7 @@ class _HomeState extends State<Home> {
                         size: 20.0,
                       ),
                       underline: Container(),
-                      onChanged: (String beds) {
+                      onChanged: (String? beds) {
                         setState(() {
                           dropdownBeds = beds;
                         });
@@ -82,7 +82,7 @@ class _HomeState extends State<Home> {
                         size: 20.0,
                       ),
                       underline: Container(),
-                      onChanged: (String beds) {
+                      onChanged: (String? beds) {
                         setState(() {
                           dropdownFilter = beds;
                         });

@@ -1,13 +1,13 @@
 class Room {
-  final String name;
-  final String place;
-  final String price;
-  final String height;
-  final String width;
-  final String bath;
-  final String type;
-  final String rating;
-  final String image;
+  final String? name;
+  final String? place;
+  final String? price;
+  final String? height;
+  final String? width;
+  final String? bath;
+  final String? type;
+  final String? rating;
+  final String? image;
   Room(
       {this.bath,
       this.height,
