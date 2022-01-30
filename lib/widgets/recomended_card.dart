@@ -21,8 +21,8 @@ class RecommendedCard extends StatelessWidget {
             child: Image.asset(
               room!.image!,
               fit: BoxFit.cover,
-              width: 200.0,
-              height: 180.0,
+              width: 180.0,
+              height: 160.0,
             ),
           ),
           Container(
