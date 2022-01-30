@@ -7,9 +7,7 @@ ThemeData themeData(BuildContext context) {
   return ThemeData(
     appBarTheme: AppBarTheme(color: kBackgroundLightColor, elevation: 0),
     primaryColor: kPrimaryColor,
-    buttonColor: kPrimaryColor,
     primaryColorLight: kBackgroundDarkColor,
-    accentColor: kPrimaryDarkColor,
     errorColor: kErrorLightColor,
     hintColor: kSecondaryLightColor,
     cardColor: kCardLightColor,
@@ -120,8 +118,6 @@ ThemeData themeData(BuildContext context) {
 ThemeData darkThemeData(BuildContext context) {
   return ThemeData.dark().copyWith(
     primaryColor: kPrimaryColor,
-    accentColor: kPrimaryLightColor,
-    buttonColor: kPrimaryColor,
     primaryColorLight: kBackgroundLightColor,
     hintColor: kSecondaryDarkColor,
     cardColor: kCardDarkColor,
